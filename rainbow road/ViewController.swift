@@ -9,17 +9,26 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let colors: [UIColor] = [.red, .orange, .yellow, .green, .blue, .purple]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        }
+}
+
+extension ViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) ->Int {
+        tableView.rowHeight = 120
+        return 6
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        cell.textLabel?.text = tableContent[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "rainbowCell", for: indexPath)
+        cell.backgroundColor = colors[indexPath.row]
+        return cell
     }
-
 
 }
 
